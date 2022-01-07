@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             mapHelper = MapHelper(this)
         }
-        
+
         /*FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
 
             // Get new FCM registration token
