@@ -1,0 +1,92 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.huawei.agconnect'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.veripark.buildvariantapp"
+        minSdkVersion 24
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            // Signing certificate.
+            storeFile file('keystores/keystore')
+            // KeyStore password.
+            storePassword "huawei"
+            // Alias.
+            keyAlias "huawei"
+            // Key password.
+            keyPassword "huawei"
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    flavorDimensions "provider"
+    productFlavors
+            {
+                huawei
+                        {
+                            dimension "provider"
+                            versionNameSuffix "HMS"
+                        }
+
+                google
+                        {
+                            dimension "provider"
+                            versionNameSuffix "GMS"
+                        }
+            }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+
+    // Huawei Dependencies
+    huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.5.0.300'
+    huaweiImplementation 'com.huawei.hms:maps:6.2.1.300'
+    huaweiImplementation 'com.huawei.hms:push:6.1.0.300'
+
+    // Google Dependencies
+    googleImplementation 'com.google.android.gms:play-services-maps:18.0.2'
+    // Import the BoM for the Firebase platform
+    googleImplementation platform('com.google.firebase:firebase-bom:29.0.3')
+    // Firebase Cloud Messaging
+    googleImplementation 'com.google.firebase:firebase-messaging-ktx'
+
+}

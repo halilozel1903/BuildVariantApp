@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861372014528",
+    "project_id": "build-variants-a93a3",
+    "storage_bucket": "build-variants-a93a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861372014528:android:17a45cb87af38f54f83225",
+        "android_client_info": {
+          "package_name": "com.veripark.buildvariantapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861372014528-inl2h1k78be5cuv97edec135qj8gcp73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxLpX2zXfkzkvHZLBYxmQ_aPijU-Mdmsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861372014528-inl2h1k78be5cuv97edec135qj8gcp73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
