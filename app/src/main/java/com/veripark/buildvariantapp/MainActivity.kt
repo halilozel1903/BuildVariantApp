@@ -9,19 +9,21 @@ import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         private const val REQUEST_CODE = 1903
         private val PERMISSIONS = arrayOf(
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION)
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
     }
+
     private lateinit var mapHelper: MapHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (!hasPermissions(this, *PERMISSIONS)){
+        if (!hasPermissions(this, *PERMISSIONS)) {
             askForPermissions()
         } else {
             mapHelper = MapHelper(this)
@@ -35,13 +37,17 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
-    private fun askForPermissions(){
+    private fun askForPermissions() {
         ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE)
     }
 
     private fun hasPermissions(context: Context, vararg permissions: String): Boolean {
         for (permission in permissions) {
-            if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(
+                    context,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 return false
             }
         }
@@ -49,11 +55,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray) {
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE) {
             this.recreate()
         }
     }
