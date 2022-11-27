@@ -9,14 +9,6 @@ import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        private const val REQUEST_CODE = 1903
-        private val PERMISSIONS = arrayOf(
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        )
-    }
-
     private lateinit var mapHelper: MapHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,4 +57,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    companion object {
+        private const val REQUEST_CODE = 1903
+        private val PERMISSIONS = arrayOf(
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+    }
 }
