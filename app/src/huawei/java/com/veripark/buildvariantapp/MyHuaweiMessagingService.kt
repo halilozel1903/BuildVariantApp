@@ -13,10 +13,6 @@ import com.huawei.hms.push.RemoteMessage
 
 class MyHuaweiMessagingService : HmsMessageService() {
 
-    companion object {
-        private const val TAG = "MyHuaweiMessagingService"
-    }
-
     override fun onNewToken(token: String?) {
         super.onNewToken(token)
         println("Token : $token")
@@ -47,5 +43,9 @@ class MyHuaweiMessagingService : HmsMessageService() {
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(0, notificationBuilder.build())
+    }
+
+    companion object {
+        private const val TAG = "MyHuaweiMessagingService"
     }
 }
