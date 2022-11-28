@@ -21,8 +21,15 @@ class MapHelper(activity: AppCompatActivity) {
         mapFragment.getMapAsync {
             map = it
             map.addMarker(
-                MarkerOptions().position(LatLng(40.9808142, 28.7119718)).title("Huawei Map Kit")
-            ).snippet = "Welcome to Hell"
+                MarkerOptions().position(LatLng(LATITUDE, LONGITUDE)).title(TITLE)
+            ).snippet = SNIPPET
         }
+    }
+
+    companion object {
+        private const val TITLE = "Welcome to Heaven"
+        private const val SNIPPET = "Huawei Map Kit"
+        private const val LATITUDE = 40.9808142
+        private const val LONGITUDE = 28.7119718
     }
 }
