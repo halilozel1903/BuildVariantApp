@@ -1,5 +1,6 @@
 package com.veripark.buildvariantapp
 
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
@@ -11,10 +12,6 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-
-    companion object {
-        private const val TAG = "FirebaseMessagingService"
-    }
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
@@ -28,6 +25,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification(title: String?, body: String?) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -48,5 +46,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(0, notificationBuilder.build())
+    }
+
+    companion object {
+        private const val TAG = "FirebaseMessagingService"
     }
 }
