@@ -66,6 +66,7 @@ android {
                             versionNameSuffix "GMS"
                         }
             }
+    namespace 'com.veripark.buildvariantapp'
 }
 
 dependencies {
